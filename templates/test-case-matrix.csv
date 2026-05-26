@@ -1,6 +1,12 @@
-ID,Folder,Endpoint,Method,Scenario,Input file/body,Expected status,Expected response check,Type,Pass/Fail,Evidence
-TC01,Functional,/health,GET,Service is alive,-,200,status=ok,functional,,
-TC02,Functional,/readings,POST,Create reading happy path,mock-data/sensor-reading-valid.json,201,"has reading_id, accepted=true",functional,,
-TC03,Negative,/readings,POST,Missing device_id,mock-data/sensor-reading-invalid-missing-device.json,400,Problem Details,negative,,
-TC04,Auth,/readings,POST,Missing token,mock-data/sensor-reading-valid.json,401,Problem Details,auth,,
-TC05,Boundary,/readings,POST,High temperature boundary,mock-data/sensor-reading-boundary.json,201/400,documented behavior,boundary,,
+TestID,Thư mục,API,Input,Expected Status,Loại Test
+TC01,01_Functional,GET /analytics/events,Hợp lệ (token),200,Happy Path
+TC02,01_Functional,POST /analytics/iot-events,Hợp lệ (token + body JSON),201,Happy Path
+TC03,01_Functional,GET /analytics/kpi,Hợp lệ (token),200,Happy Path
+TC04,02_Auth,GET /analytics/kpi,Thiếu token,401,Negative
+TC05,02_Auth,GET /analytics/kpi,Token sai,401,Negative
+TC06,03_Negative,POST /analytics/iot-events,Thiếu deviceId (bắt buộc),400/422,Negative 
+TC07,03_Negative,GET /analytics/report/{id},ID không tồn tại,404,Negative
+TC08,04_Boundary_Reliability,GET /analytics/kpi,Hợp lệ (token),200/429,Boundary
+TC09,04_Boundary_Reliability,GET /analytics/events?limit=9999,Limit vượt mức tối đa,400/422,Boundary
+TC10,05_Consumer_side_Smoke,GET /health (Mock of Core),Hợp lệ,200/201,Integration
+TC11,06_Local_only_NonFunctional,GET /health,Local call,Dưới 1000ms,Performance

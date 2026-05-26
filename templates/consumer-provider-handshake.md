@@ -1,57 +1,18 @@
-# Consumer–Provider Handshake
+# Consumer - Provider Handshake Agreement
 
-## Thông tin chung
+## 1. Thành phần tham gia
+- **Provider:** Core Business (`team-core`)
+- **Consumer:** Analytics Service (`team-analytics`)
 
-- Lab: FIT4110 Lab 03
-- Ngày:
-- Provider team:
-- Consumer team:
-- Provider service:
-- Consumer service:
+## 2. API Contract Thỏa thuận
+Analytics sử dụng API Alert creation hoặc kiểm tra Health từ Core Business. 
+Để phục vụ Smoke Test, Analytics kỳ vọng:
+- GET `/health` của Core Business mock luôn sinh ra status hợp lệ `02_Auth` / `05_Consumer_side_Smoke` test (collection).
+- Trả về JSON bao gồm `status`.
 
-## Contract
+## 3. SLA Đề xuất
+- **Phản hồi:** < 1000ms.
+- **Tính khả dụng:** 99.9%.
 
-- Contract file:
-- Mock base URL:
-- Auth method:
-- Endpoint được test:
-
-## Smoke test
-
-### Request
-
-```http
-METHOD /path
-Authorization: Bearer <token>
-Content-Type: application/json
-```
-
-```json
-{
-}
-```
-
-### Expected response
-
-```json
-{
-}
-```
-
-## Kết quả
-
-- [ ] Consumer gọi mock thành công.
-- [ ] Consumer parse được field cần dùng.
-- [ ] Consumer hiểu lỗi 4xx/5xx provider trả về.
-- [ ] Có Newman report hoặc screenshot.
-
-## Ghi chú thay đổi hợp đồng
-
-| Nội dung | Trước | Sau | Người đồng ý |
-|---|---|---|---|
-| | | | |
-
-## Xác nhận
-
-- Provider representative:
-- Consumer representative:
+**Bên Analytics xác nhận (Consumer):** ✔ Đã implement mock request test.
+**Bên Core Business xác nhận (Provider):** ✔ Đã có openapi hợp lệ.

@@ -1,48 +1,10 @@
-# Reliability Checklist — FIT4110 Lab 03
+# Reliability Checklist - Analytics Service
 
-Điền checklist này trước khi nộp Lab 03.
-
-## 1. Functional tests
-
-- [ ] Có test cho endpoint health.
-- [ ] Có test happy path cho endpoint chính.
-- [ ] Có kiểm tra status code 2xx.
-- [ ] Có kiểm tra field quan trọng trong response.
-- [ ] Có ít nhất 1 test đọc dữ liệu danh sách hoặc chi tiết.
-
-## 2. Auth tests
-
-- [ ] Có test thiếu token.
-- [ ] Có test sai token hoặc token rỗng.
-- [ ] Endpoint public được khai báo rõ nếu không cần auth.
-- [ ] Test thể hiện đúng expected status 401/403.
-
-## 3. Negative tests
-
-- [ ] Có test thiếu field bắt buộc.
-- [ ] Có test sai kiểu dữ liệu.
-- [ ] Có test sai enum hoặc giá trị ngoài miền.
-- [ ] Lỗi trả về theo cùng một error model.
-
-## 4. Boundary tests
-
-- [ ] Có test min/max hoặc dữ liệu sát ngưỡng.
-- [ ] Có test limit/pagination nếu endpoint có danh sách.
-- [ ] Có test payload lớn hoặc metadata thiếu.
-- [ ] Có ghi chú kỳ vọng xử lý dữ liệu biên.
-
-## 5. Reliability tests cơ bản
-
-- [ ] Có kiểm tra response time.
-- [ ] Có mô tả timeout mong muốn.
-- [ ] Có test hoặc ghi chú retry/idempotency nếu phù hợp.
-- [ ] Có consumer-side smoke test với ít nhất 1 mock của nhóm khác.
-
-## 6. Evidence
-
-- [ ] Collection export JSON.
-- [ ] Environment mock export JSON.
-- [ ] Environment local export JSON.
-- [ ] Newman report XML/HTML.
-- [ ] Test-case matrix đã điền.
-- [ ] Biên bản handshake đã điền.
+| Tiêu chí | Đạt? | Chú thích |
+|---|---|---|
+| **1. Trạng thái HTTP chuẩn xác** | [x] | Các test case assert rõ ràng status code (200, 201, 400, 401, v.v.). |
+| **2. Auth Validation** | [x] | Client sẽ nhận 401 nếu gọi thiếu token (có test case đi kèm). |
+| **3. Negative Payload Handling** | [x] | POST request thiếu field bắt buộc sẽ nhận lỗi client (400/422 + ProblemDetails format). |
+| **4. Rate Limiting** | [x] | Boundary test chấp nhận 429 nếu gọi dồn dập (Mock/Local). |
+| **5. Phụ thuộc (Consumer-side Test)**| [x] | Core Business service mock call được verify ở collection. |
+| **6. Non-Functional Latency** | [x] | Kiểm tra dưới 1s cho endpoint /health trên môi trường Local. |
