@@ -488,13 +488,13 @@
       "name": "05_Consumer_side_Smoke",
       "item": [
         {
-          "name": "11. Gọi mock Core Business",
+          "name": "11. Gọi mock IoT Ingestion",
           "event": [
             {
               "listen": "test",
               "script": {
                 "exec": [
-                  "pm.test(\"Core Business Mock is alive and returns valid response\", function () {",
+                  "pm.test(\"IoT Ingestion Mock is alive and returns valid response\", function () {",
                   "    pm.expect([200, 201]).to.include(pm.response.code);",
                   "});"
                 ],
@@ -512,9 +512,9 @@
               }
             ],
             "url": {
-              "raw": "{{coreBusinessMockUrl}}/health",
+              "raw": "{{iotMockUrl}}/health",
               "host": [
-                "{{coreBusinessMockUrl}}"
+                "{{iotMockUrl}}"
               ],
               "path": [
                 "health"
