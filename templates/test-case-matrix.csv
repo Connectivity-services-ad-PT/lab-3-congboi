@@ -10,3 +10,4 @@ TC08,04_Boundary_Reliability,GET /analytics/kpi,Hợp lệ (token),200/429,Bound
 TC09,04_Boundary_Reliability,GET /analytics/events?limit=9999,Limit vượt mức tối đa,400/422,Boundary
 TC10,05_Consumer_side_Smoke,GET /health (Mock of Core),Hợp lệ,200/201,Integration
 TC11,06_Local_only_NonFunctional,GET /health,Local call,Dưới 1000ms,Performance
+TC12,03_Negative,GET /analytics/kpi,Thiếu startTime,400/422,Negative

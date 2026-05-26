@@ -325,6 +325,22 @@ paths:
       tags:
         - analytics
 
+      parameters:
+        - name: startTime
+          in: query
+          description: Thời gian bắt đầu
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: endTime
+          in: query
+          description: Thời gian kết thúc
+          required: true
+          schema:
+            type: string
+            format: date-time
+
       responses:
         '200':
           description: KPI statistics

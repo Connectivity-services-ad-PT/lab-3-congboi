@@ -136,13 +136,23 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/analytics/kpi",
+              "raw": "{{baseUrl}}/analytics/kpi?startTime=2023-11-20T00:00:00Z&endTime=2023-11-20T23:59:59Z",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "analytics",
                 "kpi"
+              ],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "2023-11-20T00:00:00Z"
+                },
+                {
+                  "key": "endTime",
+                  "value": "2023-11-20T23:59:59Z"
+                }
               ]
             }
           }
@@ -171,13 +181,23 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/analytics/kpi",
+              "raw": "{{baseUrl}}/analytics/kpi?startTime=2023-11-20T00:00:00Z&endTime=2023-11-20T23:59:59Z",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "analytics",
                 "kpi"
+              ],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "2023-11-20T00:00:00Z"
+                },
+                {
+                  "key": "endTime",
+                  "value": "2023-11-20T23:59:59Z"
+                }
               ]
             }
           }
@@ -207,13 +227,23 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/analytics/kpi",
+              "raw": "{{baseUrl}}/analytics/kpi?startTime=2023-11-20T00:00:00Z&endTime=2023-11-20T23:59:59Z",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "analytics",
                 "kpi"
+              ],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "2023-11-20T00:00:00Z"
+                },
+                {
+                  "key": "endTime",
+                  "value": "2023-11-20T23:59:59Z"
+                }
               ]
             }
           }
@@ -312,6 +342,48 @@
               ]
             }
           }
+        },
+        {
+          "name": "8. GET /analytics/kpi (Thiếu startTime - Missing Time Range)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Missing time range returns 400 or 422\", function () {",
+                  "    pm.expect([400, 422]).to.include(pm.response.code);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/analytics/kpi?endTime=2023-11-20T23:59:59Z",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "analytics",
+                "kpi"
+              ],
+              "query": [
+                {
+                  "key": "endTime",
+                  "value": "2023-11-20T23:59:59Z"
+                }
+              ]
+            }
+          }
         }
       ]
     },
@@ -319,7 +391,7 @@
       "name": "04_Boundary_Reliability",
       "item": [
         {
-          "name": "8. Rate Limit or Success",
+          "name": "9. Rate Limit or Success",
           "event": [
             {
               "listen": "test",
@@ -347,19 +419,29 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/analytics/kpi",
+              "raw": "{{baseUrl}}/analytics/kpi?startTime=2023-11-20T00:00:00Z&endTime=2023-11-20T23:59:59Z",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "analytics",
                 "kpi"
+              ],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "2023-11-20T00:00:00Z"
+                },
+                {
+                  "key": "endTime",
+                  "value": "2023-11-20T23:59:59Z"
+                }
               ]
             }
           }
         },
         {
-          "name": "9. Boundary Limit (> 100)",
+          "name": "10. Boundary Limit (> 100)",
           "event": [
             {
               "listen": "test",
@@ -406,7 +488,7 @@
       "name": "05_Consumer_side_Smoke",
       "item": [
         {
-          "name": "10. Gọi mock Core Business",
+          "name": "11. Gọi mock Core Business",
           "event": [
             {
               "listen": "test",
@@ -446,7 +528,7 @@
       "name": "06_Local_only_NonFunctional",
       "item": [
         {
-          "name": "11. Latency check",
+          "name": "12. Latency check",
           "event": [
             {
               "listen": "test",
